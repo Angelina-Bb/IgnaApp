@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Calendar">
+  <ClassDiagramComponents>
+    <Class name="Day" package="" visibility="public" xPosition="529.0" yPosition="171.0">
+      <Fields>
+        <Field name="schedule" type="ArrayList&lt;Schedule&gt;" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Schelude" package="" visibility="public" xPosition="744.0" yPosition="313.0">
+      <Fields>
+        <Field name="hour" type="LocalTime" visibility="private"/>
+        <Field name="comment" type="String" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Calendar" package="" visibility="public" xPosition="153.0" yPosition="121.0">
+      <Fields>
+        <Field name="currentDay" type="LocalDate" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <IsRelation name="is" source="Day" target="Calendar"/>
+    <HasRelation name="has" source="Schelude" target="Day" type="Default" sourceCardinality="0..1" targetCardinality="1..*" collectionType="ArrayList"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
