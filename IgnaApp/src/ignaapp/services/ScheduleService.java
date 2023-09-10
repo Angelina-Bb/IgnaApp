@@ -23,7 +23,7 @@ public class ScheduleService {
         System.out.println("Las tareas pendientes para del dia " + formattedDate + " son:");
         newDay.setCurrenDate(myDateNow);
         
-        //CREATE LA BASE DE DATOS!
+        //CREATE LA BASE DE DATOS!!
     }
     
     public void updateSchedule(){
