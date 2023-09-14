@@ -8,7 +8,7 @@ public class IgnaApp {
     public static void main(String[] args) {
         ScheduleService nss = new ScheduleService();
         
-        nss.requestSchedule();
+        nss.createSchedule();
     }
 
 }

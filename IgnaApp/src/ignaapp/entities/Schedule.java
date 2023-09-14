@@ -4,6 +4,7 @@ import java.time.LocalTime;
 
 
 public class Schedule {
+    private Integer id_schedule;
     private LocalTime hour;
     private String title;
     private String comment;
@@ -12,11 +13,20 @@ public class Schedule {
     public Schedule() {
     }
 
-    public Schedule(LocalTime hour, String title, String comment, Day day) {
+    public Schedule(Integer id_schedule, LocalTime hour, String title, String comment, Day day) {
+        this.id_schedule = id_schedule;
         this.hour = hour;
         this.title = title;
         this.comment = comment;
         this.day = day;
+    }
+
+    public Integer getId_schedule() {
+        return id_schedule;
+    }
+
+    public void setId_schedule(Integer id_schedule) {
+        this.id_schedule = id_schedule;
     }
 
     public LocalTime getHour() {
