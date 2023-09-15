@@ -30,6 +30,7 @@ public class ScheduleService {
             newSchedule.setComment(read.next());
             System.out.println("Hora de la tarea. HH:mm");
             String myTime = read.next();
+            // Variable formattedDate para visualizar la hora y segundos
             LocalTime theFormatTime = LocalTime.parse(myTime, myFormatTime);
         }else{
             System.out.println("No se puede crear una tarea en fechas anteriores a la actual.");
@@ -38,7 +39,6 @@ public class ScheduleService {
     }
     
     public void requestSchedule() {
-        
         String formattedDate = myDateNow.format(myFormatDate);
         newDay.setCurrenDate(myDateNow);
         System.out.println("Las tareas pendientes para del dia " + formattedDate + " son:");
