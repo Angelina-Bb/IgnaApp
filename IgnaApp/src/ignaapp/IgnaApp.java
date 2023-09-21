@@ -12,6 +12,9 @@ public class IgnaApp {
         // Ejecutando programa
         ScheduleService nss = new ScheduleService();
         nss.createSchedule();
+        
+        
+        //TODO pensar en como realizar alertas para que la app realice alertas a traves de whatsapp para ciertas citas
     }
 
 }
