@@ -2,32 +2,68 @@ package ignaapp;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 
 public class CConnection {
-    private static Connection connect = null;
-    private static String user = "root";
-    private static String password = "root";
-    private static String db = "ignaappdb";
-    private static String ip = "localhost";
-    private static String port = "3306";
+    protected Connection connect = null;
+    protected ResultSet result = null;
+    protected Statement stmt = null;
+    private static final String USER = "root";
+    private static final String PASSWORD = "root";
+    private static final String DB = "ignaappdb";
+    private static final String IP = "localhost";
+    private static final String PORT = "3306";
+    private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
     
-    String url = "jdbc:mysql://" + ip + ":" + port + "/" + db;
 
-    public CConnection() {
+
+    protected void establishConnection() throws ClassNotFoundException, SQLException{
+        try {
+           Class.forName(DRIVER);
+           String url = "jdbc:mysql://" + IP + ":" + PORT + "/" + DB + "?useSLL=false";
+           connect = DriverManager.getConnection(url, USER, PASSWORD);
+           if(connect != null){
+               JOptionPane.showMessageDialog(null,"Successfuly connected to " + DB);
+           }
+        } catch (ClassNotFoundException | SQLException ex) {
+            throw ex;
+        }
     }
     
-    public Connection establishConnection(){
+    protected void disconnect() throws Exception{
         try {
-           Class.forName("com.mysql.cj.jdbc.Driver");
-           connect = DriverManager.getConnection(url, user, password);
-           if(connect != null){
-               JOptionPane.showMessageDialog(null,"Successfuly connected to " + db);
-           }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Connection failed: " + e.toString());
+            if (result != null){
+                result.close();
+            }
+            if (stmt != null){
+                stmt.close();
+            }
+            if (connect != null){
+                connect.close();
+            }
+        } catch (Exception e){
+            throw e;
         }
-        return connect;
     }
+    
+    protected void insertModifyDelete(String sql) throws Exception{
+        try {
+            establishConnection();
+            stmt = connect.createStatement();
+            stmt.executeUpdate(sql);                    
+        } catch (SQLException | ClassNotFoundException ex) {
+            throw ex;
+        } finally{
+            disconnect();
+        }
+    }
+    
+    
 }
+ 

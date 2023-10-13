@@ -32,6 +32,7 @@ public class ScheduleService {
             String myTime = read.next();
             // Variable formattedDate para visualizar la hora y segundos
             LocalTime theFormatTime = LocalTime.parse(myTime, myFormatTime);
+            System.out.println(newSchedule);
         }else{
             System.out.println("No se puede crear una tarea en fechas anteriores a la actual.");
         }
@@ -53,4 +54,10 @@ public class ScheduleService {
     public void deleteSchedule(){
     
     }
+
+    @Override
+    public String toString() {
+        return "ScheduleService{" + "newSchedule=" + newSchedule + '}';
+    }
+    
 }
